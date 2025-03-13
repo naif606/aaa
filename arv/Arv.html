@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مزيونة الشمال والمملكة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff69b4;
+      --hot-pink: #ff1493;
+      --sparkle: #fffacd;
+    }
+    /* تحديث خلفية الصفحة باستخدام الصورة الجديدة */
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      color: var(--pink);
+      overflow-x: hidden;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+      background: 
+        linear-gradient(45deg, #1a1a1a, #2d2d2d),
+        url('https://www.parismatch.com/lmnr/var/pm/public/media/image/2022/03/07/19/Anna-Karina-et-Jean-Luc-Godard-les-maries-de-la-Nouvelle-Vague.jpg?VersionId=9uCx33a2BzuLGF4chAOSDl0bnb93nRu');
+      background-blend-mode: overlay;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      animation: bgAnimation 10s ease infinite;
+    }
+    @keyframes bgAnimation {
+      0% { background-position: 0% 50%, center; }
+      50% { background-position: 100% 50%, center; }
+      100% { background-position: 0% 50%, center; }
+    }
+    .glitter-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="10" cy="10" r="1" fill="%23fffacd"/><circle cx="50" cy="30" r="1.2" fill="%23ff69b4"/><circle cx="80" cy="70" r="0.8" fill="%23ffffff"/></svg>');
+      animation: sparkle 2s linear infinite;
+    }
+    @keyframes sparkle {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.3; }
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    /* عنوان بنمط بيكسلي مع ظل متحرك باللون الأسود */
+    .title {
+      font-size: 2.5em;
+      color: var(--pink);
+      margin: 30px 0;
+      text-shadow: 2px 2px 2px black;
+      animation: subtleShadow 3s ease-in-out infinite;
+    }
+    @keyframes subtleShadow {
+      0% { text-shadow: 2px 2px 2px black; }
+      50% { text-shadow: 4px 4px 4px black; }
+      100% { text-shadow: 2px 2px 2px black; }
+    }
+    /* نص فرعي تحت العنوان */
+    .subtitle {
+      font-size: 1.5em;
+      color: var(--pink);
+      margin-bottom: 40px;
+    }
+    .message-box {
+      border: 4px solid var(--pink);
+      padding: 20px;
+      margin: 30px auto;
+      background: rgba(45, 45, 45, 0.9);
+      position: relative;
+      max-width: 90%;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s ease;
+    }
+    .message-box:hover {
+      transform: rotateZ(1deg) scale(1.02);
+    }
+    .message-box p {
+      margin: 10px 0;
+      font-size: 1em;
+      line-height: 1.3;
+    }
+    .pixel-heart {
+      width: 60px;
+      height: 60px;
+      margin: 20px auto;
+      cursor: pointer;
+      background: var(--hot-pink);
+      clip-path: polygon(50% 15%, 61% 35%, 85% 35%, 68% 55%, 75% 80%, 50% 70%, 25% 80%, 32% 55%, 15% 35%, 39% 35%);
+      animation: float 3s ease-in-out infinite;
+      transition: transform 0.2s ease;
+    }
+    .pixel-heart:hover {
+      transform: scale(1.1);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .video-container {
+      margin: 40px auto;
+      max-width: 800px;
+      border: 4px solid var(--pink);
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255,105,180,0.3);
+      transform: perspective(1000px) rotateX(5deg);
+      transition: transform 0.3s ease;
+    }
+    .video-container:hover {
+      transform: perspective(1000px) rotateX(0);
+    }
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+    .particles {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .particle {
+      position: absolute;
+      background: var(--sparkle);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .secret-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1em;
+      line-height: 1.4;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px dashed var(--pink);
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="glitter-overlay"></div>
+  <div class="particles" id="particles"></div>
+  
+  <div class="container">
+    <h1 class="title">مزيونة الشمال</h1>
+    <div class="subtitle">roro</div>
+    
+    <div class="message-box">
+      <p>الورود تغار منها مزهرية مزهرية</p>
+      <p>وان تباهت عذرها معها حق تباها</p>
+      <p>ما يشابها شبيه ولا يحاليها حلية</p>
+      <p>جل رب يوم صورها فرقها عن سواها</p>
+      <p>A</p>
+    </div>
+  
+    <div class="pixel-heart" onclick="showSecretMessage(event)"></div>
+    
+    <div id="secret" class="secret-message">
+      ❤️ أن جيتني محشوم وأن رحت مستور<br>
+      مانيب احب الحاجة اللي.. ماهي لي<br>
+      وعسى التعب مخلوف والذنب مغفور<br>
+      وعساني ما قصرت معك ... في شيء ❤️
+    </div>
+  
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/jApVfSaqaWQ?start=13" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+  
+  <script>
+    // نظام الجسيمات المتحركة
+    class ParticleSystem {
+      constructor() {
+        this.particles = [];
+        this.container = document.getElementById('particles');
+      }
+      create(x, y) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        const size = Math.random() * 5 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        this.container.appendChild(particle);
+        this.particles.push({
+          element: particle,
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 4,
+          vy: (Math.random() - 2) * 4,
+          life: 1
+        });
+        setTimeout(() => particle.remove(), 1000);
+      }
+      update() {
+        this.particles.forEach((p, index) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.1;
+          p.life -= 0.02;
+          p.element.style.transform = `translate(${p.x}px, ${p.y}px)`;
+          p.element.style.opacity = p.life;
+          if (p.life <= 0) {
+            this.particles.splice(index, 1);
+            p.element.remove();
+          }
+        });
+      }
+    }
+    const ps = new ParticleSystem();
+    setInterval(() => ps.update(), 1000/60);
+    document.addEventListener('click', (e) => {
+      for (let i = 0; i < 10; i++) {
+        ps.create(e.clientX, e.clientY);
+      }
+    });
+    // عرض الرسالة المخفية عند الضغط على القلب
+    function showSecretMessage(event) {
+      const secret = document.getElementById('secret');
+      secret.style.display = 'block';
+      for (let i = 0; i < 20; i++) {
+        ps.create(
+          event.clientX + Math.random() * 30 - 15,
+          event.clientY + Math.random() * 30 - 15
+        );
+      }
+    }
+  </script>
+</body>
+</html>
